@@ -589,7 +589,7 @@ jQuery('<div/>', {
 $("#add_neutral_thesis").bind("click", function () {
     var node_id = 'node_' + node_count;
     annotations.nodes[node_id] = {};
-    window.Sentiment.add_node(node_id, rclick.pageX, rclick.pageY, 'neutral thesis', 'node_type_neutral_thesis');
+    window.Sentiment.add_node(node_id, rclick.pageX, rclick.pageY, 'new node', 'node_type_neutral_thesis');
     if (window.Sentiment.auto_support_from_adus) {
         window.Sentiment.auto_support_from_adus(node_id);
     }
@@ -1241,7 +1241,7 @@ $("#add_neutral_thesis").bind("click", function () {
                 }
                 var target_span = $('#' + i.connection.target.id + '_span')[0];
                 //if (i.connection.target.innerText == 'new node' || i.connection.target.innerHTML == 'new node') { //TODO: hardcoded hack
-                if (target_span.innerHTML == 'new node') {
+                if (target_span.innerHTML == 'new node' || target_span.innerHTML == 'neutral thesis') {
                     // ground the ADU in one EDU or EDU-JOIN
                     //i.connection.target.innerHTML = source_label;
                     target_span.innerHTML = source_label;
