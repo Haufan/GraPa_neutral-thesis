@@ -16,7 +16,8 @@ sqlite_db = SqliteDatabase('grapat.db', pragmas={
 
 map_node_type = {
     'node_type_proponent': 'pro',
-    'node_type_opponent': 'opp'
+    'node_type_opponent': 'opp',
+    'node_type_neutral_thesis': 'neu'
 }
 
 map_edge_type = {
@@ -121,9 +122,9 @@ def graph_to_xml(text_id, graph, edus):
     max_adu_id = 1
     for k in sorted_nicely(graph['nodes'].keys()):
         v = graph['nodes'][k]
-        if v.get('n_type', None) in ['node_type_proponent',
-                                     'node_type_opponent']:
-            adu_type = map_node_type[v['n_type']]
+        n_type = v.get('n_type', None)
+        if n_type in map_node_type:
+            adu_type = map_node_type[n_type]
             adu_id = 'a%d' % max_adu_id
             node_to_xml_ids[k] = adu_id
             max_adu_id += 1
