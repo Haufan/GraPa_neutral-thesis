@@ -57,8 +57,8 @@ async def get_resources(request: Request):
 
 @app.get("/resources/{fname}", tags=["api"])
 async def get_resource(fname, request: Request):
-    data = open(os.path.join('static/data/', fname)).read()
-    return Response(content=data, media_type="application/xml")
+    data = open(os.path.join('static/data/', fname), encoding="utf-8").read()
+    return Response(content=data, media_type="application/xml; charset=utf-8")
 
 
 @app.get("/users", tags=["api"])
